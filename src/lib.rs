@@ -1,6 +1,9 @@
+pub mod graph;
 mod utils;
 
-use wasm_bindgen::prelude::*;
+extern crate modulee_engine;
+pub use graph::Graph;
+use wasm_bindgen::prelude::wasm_bindgen;
 
 #[wasm_bindgen]
 extern "C" {
