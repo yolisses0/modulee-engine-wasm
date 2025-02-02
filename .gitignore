@@ -4,3 +4,5 @@ Cargo.lock
 bin/
 pkg/
 wasm-pack.log
+
+!pkg/text-encoder-and-decoder-polyfill.js
