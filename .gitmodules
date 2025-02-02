@@ -1,0 +1,3 @@
+[submodule "vendor/modulee-engine"]
+	path = vendor/modulee-engine
+	url = https://github.com/yolisses0/modulee-engine
