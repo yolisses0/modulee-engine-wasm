@@ -1,6 +1,6 @@
 #!/bin/bash
 
-wasm-pack build &&
+wasm-pack build $1 &&
     (
         # Define the file path
         file_path="pkg/modulee_engine_wasm_bg.js"
