@@ -25,9 +25,9 @@ impl Graph {
     }
 
     #[wasm_bindgen]
-    pub fn set_nodes(&mut self, nodes_data: String) {
-        if let Err(e) = self.graph.set_nodes_from_json(&nodes_data) {
-            log::error!("Failed to set nodes from JSON: {}\n{}", e, nodes_data);
+    pub fn set_nodes_from_json(&mut self, nodes_data_json: String) {
+        if let Err(e) = self.graph.set_nodes_from_json(&nodes_data_json) {
+            log::error!("Failed to set nodes from JSON: {}\n{}", e, nodes_data_json);
         }
     }
 
