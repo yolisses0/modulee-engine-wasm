@@ -13,10 +13,10 @@ pub struct Graph {
 #[wasm_bindgen]
 impl Graph {
     #[wasm_bindgen(constructor)]
-    pub fn new() -> Self {
+    pub fn new(main_group_id: usize) -> Self {
         Self {
             buffer: [0.; BUFFER_SIZE],
-            graph: modulee_engine::graph::Graph::new(),
+            graph: modulee_engine::graph::Graph::new(main_group_id),
         }
     }
 
@@ -31,9 +31,13 @@ impl Graph {
     }
 
     #[wasm_bindgen]
-    pub fn set_nodes_from_json(&mut self, nodes_data_json: String) {
-        if let Err(e) = self.graph.set_nodes_from_json(&nodes_data_json) {
-            log::error!("Failed to set nodes from JSON: {}\n{}", e, nodes_data_json);
+    pub fn set_groups_from_json(&mut self, groups_data_json: String) {
+        if let Err(e) = self.graph.set_groups_from_json(&groups_data_json) {
+            log::error!(
+                "Failed to set groups from JSON: {}\n{}",
+                e,
+                groups_data_json
+            );
         }
     }
 
