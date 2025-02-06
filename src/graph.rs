@@ -36,4 +36,14 @@ impl Graph {
             log::error!("Failed to set nodes from JSON: {}\n{}", e, nodes_data_json);
         }
     }
+
+    #[wasm_bindgen]
+    pub fn set_note_on(&mut self, pitch: f32) {
+        self.graph.set_note_on(pitch);
+    }
+
+    #[wasm_bindgen]
+    pub fn set_note_off(&mut self, pitch: f32) {
+        self.graph.set_note_off(pitch);
+    }
 }
