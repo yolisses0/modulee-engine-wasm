@@ -13,10 +13,10 @@ pub struct Graph {
 #[wasm_bindgen]
 impl Graph {
     #[wasm_bindgen(constructor)]
-    pub fn new(main_group_id: usize) -> Self {
+    pub fn new() -> Self {
         Self {
             buffer: [0.; BUFFER_SIZE],
-            graph: modulee_engine::graph::Graph::new(main_group_id),
+            graph: modulee_engine::graph::Graph::new(),
         }
     }
 
@@ -49,5 +49,10 @@ impl Graph {
     #[wasm_bindgen]
     pub fn set_note_off(&mut self, pitch: f32) {
         self.graph.set_note_off(pitch);
+    }
+
+    #[wasm_bindgen]
+    pub fn set_main_group_id(&mut self, main_group_id: usize) {
+        self.graph.set_main_group_id(main_group_id)
     }
 }
