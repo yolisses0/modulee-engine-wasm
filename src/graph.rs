@@ -12,13 +12,6 @@ pub struct Graph {
 
 #[wasm_bindgen]
 impl Graph {
-    #[wasm_bindgen]
-    pub fn set_nodes_from_json(&mut self, nodes_data_json: String) {
-        if let Err(e) = self.graph.set_nodes_from_json(&nodes_data_json) {
-            log::error!("Failed to set nodes from JSON: {}\n{}", e, nodes_data_json);
-        }
-    }
-
     #[wasm_bindgen(constructor)]
     pub fn new() -> Self {
         Self {
@@ -35,5 +28,12 @@ impl Graph {
     #[wasm_bindgen]
     pub fn process_block(&mut self) {
         self.graph.process_block(&mut self.buffer, BUFFER_SIZE);
+    }
+
+    #[wasm_bindgen]
+    pub fn set_nodes_from_json(&mut self, nodes_data_json: String) {
+        if let Err(e) = self.graph.set_nodes_from_json(&nodes_data_json) {
+            log::error!("Failed to set nodes from JSON: {}\n{}", e, nodes_data_json);
+        }
     }
 }
