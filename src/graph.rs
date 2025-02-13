@@ -1,3 +1,4 @@
+use log::debug;
 use wasm_bindgen::prelude::wasm_bindgen;
 
 // This value is based on the audio context block size. It should probably be
@@ -39,11 +40,15 @@ impl Graph {
                 groups_data_json
             );
         }
+
+        debug!("{:#?}", self.graph);
     }
 
     #[wasm_bindgen]
     pub fn set_note_on(&mut self, pitch: f32) {
         self.graph.set_note_on(pitch);
+
+        debug!("{:#?}", self.graph);
     }
 
     #[wasm_bindgen]
