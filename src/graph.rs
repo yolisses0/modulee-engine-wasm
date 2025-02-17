@@ -32,15 +32,10 @@ impl Graph {
     }
 
     #[wasm_bindgen]
-    pub fn set_groups_from_json(&mut self, groups_data_json: String) {
-        if let Err(e) = self.graph.set_groups_from_json(&groups_data_json) {
-            log::error!(
-                "Failed to set groups from JSON: {}\n{}",
-                e,
-                groups_data_json
-            );
+    pub fn set_graph(&mut self, graph_data_json: String) {
+        if let Err(e) = self.graph.update_from_json(&graph_data_json) {
+            log::error!("Failed to set graph from JSON: {}\n{}", e, graph_data_json);
         }
-
         debug!("{:#?}", self.graph);
     }
 
@@ -54,10 +49,5 @@ impl Graph {
     #[wasm_bindgen]
     pub fn set_note_off(&mut self, pitch: f32) {
         self.graph.set_note_off(pitch);
-    }
-
-    #[wasm_bindgen]
-    pub fn set_main_group_id(&mut self, main_group_id: usize) {
-        self.graph.set_main_group_id(main_group_id)
     }
 }
