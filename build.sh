@@ -9,7 +9,8 @@ wasm-pack build $1 &&
         import_statement='import {
     TextDecoder,
     TextEncoder,
-} from "./text-encoder-and-decoder-polyfill.js";
+} from "./text_encoder_and_decoder_polyfill.js";
+import "./getRandomValues_polyfill.js";
 
 '
 
