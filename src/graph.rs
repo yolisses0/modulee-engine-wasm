@@ -42,8 +42,7 @@ impl Graph {
     #[wasm_bindgen]
     pub fn set_note_on(&mut self, pitch: f32) {
         self.graph.set_note_on(pitch);
-
-        debug!("{:#?}", self.graph);
+        // debug!("{:#?}", self.graph);
     }
 
     #[wasm_bindgen]
