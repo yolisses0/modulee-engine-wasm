@@ -35,6 +35,7 @@ impl Graph {
         if let Err(e) = self.graph.update_from_json(&graph_data_json) {
             log::error!("Failed to set graph from JSON: {}\n{}", e, graph_data_json);
         }
+        // debug!("{:#?}", self.graph);
     }
 
     #[wasm_bindgen]
