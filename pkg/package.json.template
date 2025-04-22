@@ -1,0 +1,22 @@
+{
+  "name": "modulee-engine-wasm",
+  "type": "module",
+  "collaborators": [
+    "Yolisses <yolisses0@gmail.com>"
+  ],
+  "version": "0.1.1",
+  "files": [
+    "modulee_engine_wasm_bg.wasm",
+    "modulee_engine_wasm.js",
+    "modulee_engine_wasm_bg.js",
+    "modulee_engine_wasm.d.ts",
+    "getRandomValues_polyfill.js",
+    "text_encoder_and_decoder_polyfill.js"
+  ],
+  "main": "modulee_engine_wasm.js",
+  "types": "modulee_engine_wasm.d.ts",
+  "sideEffects": [
+    "./modulee_engine_wasm.js",
+    "./snippets/*"
+  ]
+}
