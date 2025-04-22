@@ -22,4 +22,9 @@ import "./getRandomValues_polyfill.js";
 
         # Replace the original file with the temporary file
         mv "${file_path}.tmp" "$file_path"
+
+        # Update package.json to include the polyfill files
+        package_json="pkg/package.json"
+        jq '.files += ["getRandomValues_polyfill.js", "text_encoder_and_decoder_polyfill.js"]' "$package_json" >"${package_json}.tmp" &&
+            mv "${package_json}.tmp" "$package_json"
     )
