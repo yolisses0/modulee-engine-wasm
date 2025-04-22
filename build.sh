@@ -2,8 +2,10 @@
 export RUSTFLAGS='--cfg getrandom_backend="wasm_js"'
 wasm-pack build $1 &&
     (
+        cd pkg
+
         # Define the file path
-        file_path="pkg/modulee_engine_wasm_bg.js"
+        file_path="modulee_engine_wasm_bg.js"
 
         # Define the import statement
         import_statement='import {
@@ -23,8 +25,6 @@ import "./getRandomValues_polyfill.js";
         # Replace the original file with the temporary file
         mv "${file_path}.tmp" "$file_path"
 
-        # Update package.json to include the polyfill files
-        package_json="pkg/package.json"
-        jq '.files += ["getRandomValues_polyfill.js", "text_encoder_and_decoder_polyfill.js"]' "$package_json" >"${package_json}.tmp" &&
-            mv "${package_json}.tmp" "$package_json"
+        # Replace the content of package.json with package.json.template
+        cp package.json.template package.json
     )
