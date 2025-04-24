@@ -7,7 +7,7 @@ const BUFFER_SIZE: usize = 128;
 #[wasm_bindgen]
 pub struct Graph {
     buffer: [f32; BUFFER_SIZE],
-    graph: modulee_engine::graph::Graph,
+    graph: modulee_engine::Graph,
 }
 
 #[wasm_bindgen]
@@ -16,7 +16,7 @@ impl Graph {
     pub fn new() -> Self {
         Self {
             buffer: [0.; BUFFER_SIZE],
-            graph: modulee_engine::graph::Graph::new(),
+            graph: modulee_engine::Graph::new(),
         }
     }
 
