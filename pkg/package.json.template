@@ -4,7 +4,7 @@
   "collaborators": [
     "Yolisses <yolisses0@gmail.com>"
   ],
-  "version": "0.1.1",
+  "version": "0.1.2",
   "files": [
     "modulee_engine_wasm_bg.wasm",
     "modulee_engine_wasm.js",
