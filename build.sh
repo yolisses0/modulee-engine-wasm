@@ -26,5 +26,5 @@ import "./getRandomValues_polyfill.js";
         mv "${file_path}.tmp" "$file_path"
 
         # Replace the content of package.json with package.json.template
-        cp package.json.template package.json
+        cp package.template.json package.json
     )
