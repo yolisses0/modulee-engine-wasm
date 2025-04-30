@@ -1,10 +1,8 @@
 {
   "name": "modulee-engine-wasm",
   "type": "module",
-  "collaborators": [
-    "Yolisses <yolisses0@gmail.com>"
-  ],
-  "version": "0.1.2",
+  "collaborators": ["Yolisses <yolisses0@gmail.com>"],
+  "version": "0.2.0",
   "files": [
     "modulee_engine_wasm_bg.wasm",
     "modulee_engine_wasm.js",
@@ -15,8 +13,5 @@
   ],
   "main": "modulee_engine_wasm.js",
   "types": "modulee_engine_wasm.d.ts",
-  "sideEffects": [
-    "./modulee_engine_wasm.js",
-    "./snippets/*"
-  ]
+  "sideEffects": ["./modulee_engine_wasm.js", "./snippets/*"]
 }
