@@ -16,7 +16,7 @@ impl Graph {
     pub fn new() -> Self {
         Self {
             buffer: [0.; BUFFER_SIZE],
-            graph: modulee_engine::Graph::new(),
+            graph: modulee_engine::Graph::default(),
         }
     }
 
