@@ -2,7 +2,7 @@
   "name": "modulee-engine-wasm",
   "type": "module",
   "collaborators": ["Yolisses <yolisses0@gmail.com>"],
-  "version": "0.2.2",
+  "version": "0.2.3",
   "files": [
     "modulee_engine_wasm_bg.wasm",
     "modulee_engine_wasm.js",
