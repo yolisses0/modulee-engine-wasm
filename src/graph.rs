@@ -47,4 +47,10 @@ impl Graph {
     pub fn set_note_off(&mut self, pitch: f32) {
         self.graph.set_note_off(pitch);
     }
+
+    #[wasm_bindgen]
+    pub fn update_control(&mut self, id: usize, value: f32) {
+        let control_update_data = modulee_engine::ControlUpdateData { id, value };
+        self.graph.update_control(&control_update_data);
+    }
 }
