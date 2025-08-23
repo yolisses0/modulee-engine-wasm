@@ -6,7 +6,8 @@ const BUFFER_SIZE: usize = 128;
 
 #[wasm_bindgen]
 pub struct Graph {
-    buffer: [f32; BUFFER_SIZE],
+    buffer_0: [f32; BUFFER_SIZE],
+    buffer_1: [f32; BUFFER_SIZE],
     graph: modulee_engine::Graph,
 }
 
@@ -15,19 +16,30 @@ impl Graph {
     #[wasm_bindgen(constructor)]
     pub fn new() -> Self {
         Self {
-            buffer: [0.; BUFFER_SIZE],
+            buffer_0: [0.; BUFFER_SIZE],
+            buffer_1: [0.; BUFFER_SIZE],
             graph: modulee_engine::Graph::default(),
         }
     }
 
     #[wasm_bindgen]
-    pub fn get_buffer_pointer(&self) -> *const f32 {
-        self.buffer.as_ptr()
+    pub fn get_buffer_0_pointer(&self) -> *const f32 {
+        self.buffer_0.as_ptr()
+    }
+
+    #[wasm_bindgen]
+    pub fn get_buffer_1_pointer(&self) -> *const f32 {
+        self.buffer_1.as_ptr()
     }
 
     #[wasm_bindgen]
     pub fn process_block(&mut self) {
-        self.graph.process_block(&mut self.buffer, BUFFER_SIZE);
+        for i in 0..BUFFER_SIZE {
+            self.graph.process();
+            let output_values = self.graph.get_output_values();
+            self.buffer_0[i] = output_values.0;
+            self.buffer_1[i] = output_values.1;
+        }
     }
 
     #[wasm_bindgen]
