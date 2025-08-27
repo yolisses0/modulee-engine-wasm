@@ -14,11 +14,11 @@ pub struct Graph {
 #[wasm_bindgen]
 impl Graph {
     #[wasm_bindgen(constructor)]
-    pub fn new() -> Self {
+    pub fn new(sample_rate: f32) -> Self {
         Self {
             buffer_0: [0.; BUFFER_SIZE],
             buffer_1: [0.; BUFFER_SIZE],
-            graph: modulee_engine::Graph::default(),
+            graph: modulee_engine::Graph::new(sample_rate),
         }
     }
 
