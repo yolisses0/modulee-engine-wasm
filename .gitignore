@@ -8,5 +8,5 @@ wasm-pack.log
 sketch
 
 !pkg/package.template.json
-!pkg/getRandomValues_polyfill.js
-!pkg/text_encoder_and_decoder_polyfill.js
+!pkg/getRandomValuesPolyfill.js
+!pkg/TextEncoderAndDecoderPolyfill.js

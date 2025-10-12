@@ -8,8 +8,8 @@
     "modulee_engine_wasm.js",
     "modulee_engine_wasm_bg.js",
     "modulee_engine_wasm.d.ts",
-    "getRandomValues_polyfill.js",
-    "text_encoder_and_decoder_polyfill.js"
+    "getRandomValuesPolyfill.js",
+    "TextEncoderAndDecoderPolyfill.js"
   ],
   "main": "modulee_engine_wasm.js",
   "types": "modulee_engine_wasm.d.ts",
