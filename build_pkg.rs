@@ -9,8 +9,8 @@ fn add_polyfill_imports(pkg_dir: &Path) {
     let import_statement = r#"import {
     TextDecoder,
     TextEncoder,
-} from "./text_encoder_and_decoder_polyfill.js";
-import "./getRandomValues_polyfill.js";
+} from "./TextEncoderAndDecoderPolyfill.js";
+import "./getRandomValuesPolyfill.js";
 
 "#;
     let new_file_content = format!("{}{}", import_statement, file_content);
