@@ -1,6 +1,6 @@
 use std::fs;
 use std::path::Path;
-use std::process::Command;
+use std::process::{Command, Stdio};
 
 fn add_polyfill_imports(pkg_dir: &Path) {
     let file_path = pkg_dir.join("modulee_engine_wasm_bg.js");
@@ -64,18 +64,18 @@ fn replace_version_in_json(content: &str, version: &str) -> String {
     content.to_string()
 }
 
-fn main() {
-    std::env::set_var("RUSTFLAGS", "--cfg getrandom_backend=\"wasm_js\"");
-
-    let pkg_dir = Path::new("pkg");
-
-    Command::new("wasm-pack")
+fn run_wasm_pack() {
+    let mut child = Command::new("wasm-pack")
         .arg("build")
-        .output()
+        .stdout(Stdio::inherit())
+        .stderr(Stdio::inherit())
+        .spawn()
         .expect("Error running wasm-pack");
 
-    add_polyfill_imports(pkg_dir);
+    child.wait().expect("Error waiting for wasm-pack");
+}
 
+fn replace_package_json(pkg_dir: &Path) {
     // Copy package.template.json to package.json, replacing the version with Cargo.toml's version
     let package_template = pkg_dir.join("package.template.json");
     let package_json = pkg_dir.join("package.json");
@@ -91,4 +91,16 @@ fn main() {
     };
 
     fs::write(&package_json, final_content).expect("Failed to write pkg/package.json");
+}
+
+fn main() {
+    std::env::set_var("RUSTFLAGS", "--cfg getrandom_backend=\"wasm_js\"");
+
+    let pkg_dir = Path::new("pkg");
+
+    run_wasm_pack();
+
+    add_polyfill_imports(pkg_dir);
+
+    replace_package_json(pkg_dir);
 }
