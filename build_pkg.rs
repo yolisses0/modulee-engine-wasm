@@ -93,12 +93,21 @@ fn replace_package_json(pkg_dir: &Path) {
     fs::write(&package_json, final_content).expect("Failed to write pkg/package.json");
 }
 
+fn delete_gitignore(pkg_dir: &Path) {
+    let gitignore_path = pkg_dir.join(".gitignore");
+    if gitignore_path.exists() {
+        fs::remove_file(gitignore_path).expect("Failed to delete .gitignore in pkg/");
+    }
+}
+
 fn main() {
     std::env::set_var("RUSTFLAGS", "--cfg getrandom_backend=\"wasm_js\"");
 
     let pkg_dir = Path::new("pkg");
 
     run_wasm_pack();
+
+    delete_gitignore(pkg_dir);
 
     add_polyfill_imports(pkg_dir);
 
