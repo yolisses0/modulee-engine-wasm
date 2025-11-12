@@ -1,6 +1,6 @@
 [package]
 name = "modulee-engine-wasm"
-version = "1.2.2"
+version = "1.2.3"
 authors = ["Yolisses <yolisses0@gmail.com>"]
 edition = "2018"
 
